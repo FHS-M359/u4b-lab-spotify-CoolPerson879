@@ -22,4 +22,23 @@ public class Playlist {
             System.out.println(s.toString());
     }
 
+
+    public void SortYear(){
+        ArrayList<Song> temp = new ArrayList<>();
+        temp = songs;
+        int min = Integer.MAX_VALUE;
+        int index = -1;
+        ArrayList<Song> out = new ArrayList<>();
+        while(temp.size() > 1){
+        for (int i = 0; i < temp.size(); i++) {
+            if(temp.get(i).getYear() < min){
+                index = i;
+                min = temp.get(i).getYear();
+            }
+        }
+        out.add(temp.get(index));
+        temp.remove(index);
+        }
+    }
+
 }
