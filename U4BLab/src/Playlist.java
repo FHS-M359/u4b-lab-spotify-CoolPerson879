@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Playlist {
-    Scanner in = new Scanner(System.in);
     Scanner file = new Scanner(new File("spotify_unique_years_artists.txt"));
     ArrayList<Song> songs = new ArrayList<>();
     public Playlist() throws FileNotFoundException {
@@ -18,8 +17,6 @@ public class Playlist {
             Song song = new Song(lineArr[0], lineArr[1], lineArr[2], Integer.parseInt(lineArr[3]), Integer.parseInt(lineArr[4]), lineArr[5]);
             songs.add(song);
         }
-        for(Song s : songs)
-            System.out.println(s.toString());
     }
 
 
@@ -39,6 +36,48 @@ public class Playlist {
         out.add(temp.get(index));
         temp.remove(index);
         }
+        out = songs;
+
     }
+
+    public String toString(){
+        String out = "";
+        for (Song s : songs)
+            //noinspection StringConcatenationInLoop annoying yellow line
+            out += songs + "\n";
+        return out;
+    }
+
+    public void searchGenre(String s){
+        ArrayList<Song> out = new ArrayList<>();
+        for (Song c : songs){
+            if(c.getGenre().equalsIgnoreCase(s)){
+                out.add(c);
+            }
+        }
+        if(out.isEmpty())
+            System.out.println("no songs found with given query");
+        songs = out;
+        System.out.println(this);
+    }
+
+    public static ArrayList<String> SelectionSortAZArtist(ArrayList<String> list){
+        for (int i = 0; i < list.size() - 1; i++) {
+            int minIndex = i;
+
+            for (int j = i + 1; j < list.size(); j++) {
+                if (list.get(j).compareToIgnoreCase(list.get(minIndex)) < 0)
+                    minIndex = j;
+
+                //swap values
+                String temp = list.get(i);
+                list.set(i, list.get(minIndex));
+                list.set(minIndex, temp);
+
+            }
+        }
+        return list;
+    }
+
 
 }
