@@ -1,12 +1,17 @@
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class SpotifyTester {
+
+
+
     public static void main(String[] args) throws FileNotFoundException {
-        Playlist p = new Playlist();
-        p.readFile();
+        Scanner file = new Scanner(new File("spotify_unique_years_artists.txt"));
+        Playlist p = new Playlist(file);
+
         Scanner in = new Scanner(System.in);
         int next = 0;
 
@@ -22,20 +27,57 @@ public class SpotifyTester {
             System.out.println("6 - Display all Songs");
             System.out.println("7 - Quit");
             next = in.nextInt();
-            wtong = false;
+
         } catch (InputMismatchException e) {
             System.out.println("lets try that again, input a number");
             in.nextLine();
-        }}
-        if(next == 1){
-
         }
-        else if (next == 6){
-            System.out.println("Enter in a genre to search for");
+        if(next > 7 || next < 1){
+            System.out.println("lets try that again, input a number 1-8");
             in.nextLine();
-            String query = in.nextLine();
-            p.searchGenre(query);
         }
+        else{
+            wtong = false;
+        }
+        }
+        switch(next){
+            case 1:
+                System.out.println(p.SelectionSortAZArtist());
+                break;
+            case 2:
+                System.out.println(p.SelectionSortZAArtist());
+                break;
+            case 3:
+                p.InsertionSortYearNewToOld();
+                break;
+            case 4:
+                p.InsertionSortYearOldToNew();
+            case 5:
+                System.out.println("Enter in a genre to search for");
+                in.nextLine();
+                String query = in.nextLine();
+                p.searchGenre(query);
+                break;
+            case 6:
+                System.out.println(p);
+                break;
+            case 7:
+                break;
+        }
+
+
+//        if(next == 1){
+//            System.out.println(p.SelectionSortAZArtist());
+//        }
+//        if(next == 2){
+//            System.out.println(p.SelectionSortZAArtist());
+//        }
+//        else if (next == 6){
+//            System.out.println("Enter in a genre to search for");
+//            in.nextLine();
+//            String query = in.nextLine();
+//            p.searchGenre(query);
+//        }
 
 
 
