@@ -7,7 +7,11 @@ import java.util.Scanner;
 public class SpotifyTester {
 
 
-
+    /**
+     * main function - takes in the file, converts it into usable Song objects and allows the user to select one of the sorting algorithms to sort the songs in the playlist
+     * @param args
+     * @throws FileNotFoundException
+     */
     public static void main(String[] args) throws FileNotFoundException {
         Scanner file = new Scanner(new File("spotify_unique_years_artists.txt"));
         Playlist p = new Playlist(file);
@@ -19,6 +23,7 @@ public class SpotifyTester {
         while(wtong){
         try {
             System.out.println("Spotify Menu");
+
             System.out.println("1 - Sort by Artist (A-Z)");
             System.out.println("2 - Sort by Artist (Z-A)");
             System.out.println("3 - Sort by Year (Oldest to Newest)");

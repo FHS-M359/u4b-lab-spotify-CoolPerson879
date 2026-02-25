@@ -13,6 +13,11 @@ public class Playlist {
         readFile(file);
     }
 
+    /**
+     * takes in a file, reads each line and  puts the values into an ArrayList of Song objects, songs
+     * precondition: file seperated by commas
+     * @param file
+     */
     public void readFile(Scanner file) {
         while (file.hasNextLine()) {
             String line = file.nextLine();
@@ -23,26 +28,10 @@ public class Playlist {
     }
 
 
-    public void SortYear() {
-        ArrayList<Song> temp = new ArrayList<>();
-        temp = songs;
-        int min = Integer.MAX_VALUE;
-        int index = -1;
-        ArrayList<Song> out = new ArrayList<>();
-        while (temp.size() > 1) {
-            for (int i = 0; i < temp.size(); i++) {
-                if (temp.get(i).getYear() < min) {
-                    index = i;
-                    min = temp.get(i).getYear();
-                }
-            }
-            out.add(temp.get(index));
-            temp.remove(index);
-        }
-        out = songs;
-
-    }
-
+    /**
+     * returns the array as a string formatted in the ideal way
+     * @return out as String
+     */
     public String toString() {
         String out = "";
         for (Song s : songs)
@@ -51,6 +40,12 @@ public class Playlist {
         return out;
     }
 
+    /**
+     * searches for genre given a string to search for
+     * if string doesn't exist, print "no songs"
+     * precondition: String s
+     * @param s string used to search for genre
+     */
     public void searchGenre(String s) {
         ArrayList<Song> out = new ArrayList<>();
         for (Song c : songs) {
@@ -64,7 +59,12 @@ public class Playlist {
             System.out.println(f);
     }
 
-    public String SelectionSortAZArtist() {
+    /**
+     * use a selection sort to sort the values of the artist names alphabetically from A - Z
+     * void method, print to user instead
+     * no precondition
+     */
+    public void SelectionSortAZArtist() {
         ArrayList<Song> list = new ArrayList<>();
         for (Song s : songs)
             list.add(s);
@@ -88,10 +88,14 @@ public class Playlist {
         for (Song s : list)
             System.out.println(s);
 
-        return "";
+
 
     }
 
+    /**
+     * same function as the above but from Z-A
+     * @return
+     */
     public String SelectionSortZAArtist() {
         ArrayList<Song> list = new ArrayList<>();
         for (Song s : songs)
@@ -120,6 +124,12 @@ public class Playlist {
 
     }
 
+    /**
+     * use an insertion sort algorithm to sort the values of songs years from newest (largest number) to oldest (smallest)
+     * void, returns nothing
+     * prints to the console
+     * no precondition necessary
+     */
     public void InsertionSortYearNewToOld(){
         ArrayList<Song> list = new ArrayList<>();
         list = songs;
@@ -141,9 +151,14 @@ public class Playlist {
 
 
     }
-
+    /**
+     * use an insertion sort algorithm to sort the values of songs years from oldest (smallest number) to newest (largest)
+     * void, returns nothing
+     * prints to the console
+     * no precondition necessary
+     */
     public void InsertionSortYearOldToNew(){
-        ArrayList<Song> list = new ArrayList<>();
+        ArrayList<Song> list;
         list = songs;
         for (int i = 0; i < list.size(); i++) {
             Song tempValue = list.get(i);
