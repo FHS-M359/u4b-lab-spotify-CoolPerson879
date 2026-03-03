@@ -96,7 +96,7 @@ public class Playlist {
      * same function as the above but from Z-A
      * @return
      */
-    public String SelectionSortZAArtist() {
+    public void SelectionSortZAArtist() {
         ArrayList<Song> list = new ArrayList<>();
         for (Song s : songs)
             list.add(s);
@@ -120,7 +120,7 @@ public class Playlist {
         for (Song s : list)
             System.out.println(s);
 
-        return "";
+
 
     }
 

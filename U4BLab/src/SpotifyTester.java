@@ -47,10 +47,10 @@ public class SpotifyTester {
         }
         switch(next){
             case 1:
-                System.out.println(p.SelectionSortAZArtist());
+                p.SelectionSortAZArtist();
                 break;
             case 2:
-                System.out.println(p.SelectionSortZAArtist());
+                p.SelectionSortZAArtist();
                 break;
             case 3:
                 p.InsertionSortYearNewToOld();
